@@ -1,7 +1,36 @@
 package Encode::JP::Mobile::UnicodeEmoji;
 use strict;
 use warnings;
+use base qw(Encode::Encoding);
+use Encode::Alias;
+use Encode qw(:fallbacks);
+use Encode::JP::Mobile;
+use Encode::JP::Emoji;
 our $VERSION = '0.01';
+
+define_alias('x-utf8-jp-emoji' => 'x-utf8-jp-unicode-emoji');
+__PACKAGE__->Define(qw(x-utf8-jp-unicode-emoji));
+
+sub _encoding1() { Encode::find_encoding('x-utf8-e4u-unicode') }
+sub _encoding2() { Encode::find_encoding('x-sjis-e4u-docomo') }
+sub _encoding3() { Encode::find_encoding('x-sjis-docomo') }
+
+
+sub decode($$;$) {
+    my ($self, $str, $chk) = @_;
+
+    $str = Encode::decode($self->_encoding1 => $str, $chk);
+    $str = Encode::encode($self->_encoding2 => $str, $chk);
+    Encode::decode($self->_encoding3 => $str, $chk);
+}
+
+sub encode($$;$) {
+    my ( $self, $str, $chk ) = @_;
+
+    $str = Encode::encode($self->_encoding3, $str, $chk);
+    $str = Encode::decode($self->_encoding2, $str, $chk);
+    Encode::encode($self->_encoding3, $str, $chk);
+}
 
 1;
 __END__
