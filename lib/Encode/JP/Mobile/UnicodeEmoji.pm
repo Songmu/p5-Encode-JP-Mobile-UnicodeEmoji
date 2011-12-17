@@ -6,10 +6,10 @@ use Encode::Alias;
 use Encode qw(:fallbacks);
 use Encode::JP::Mobile;
 use Encode::JP::Emoji;
+use Encode::JP::Emoji::Property;
 our $VERSION = '0.01';
 
-define_alias('x-utf8-jp-emoji' => 'x-utf8-jp-unicode-emoji');
-__PACKAGE__->Define(qw(x-utf8-jp-unicode-emoji));
+__PACKAGE__->Define(qw(x-utf8-jp-mobile-unicode-emoji));
 
 sub _encoding1() { Encode::find_encoding('x-utf8-e4u-unicode') }
 sub _encoding2() { Encode::find_encoding('x-sjis-e4u-docomo') }
@@ -20,16 +20,21 @@ sub decode($$;$) {
     my ($self, $str, $chk) = @_;
 
     $str = Encode::decode($self->_encoding1 => $str, $chk);
-    $str = Encode::encode($self->_encoding2 => $str, $chk);
-    Encode::decode($self->_encoding3 => $str, $chk);
+    if ($str =~ /\p{InEmojiGoogle}/) {
+        $str = Encode::encode($self->_encoding2 => $str, $chk);
+        $str = Encode::decode($self->_encoding3 => $str, $chk);
+    }
+    $str;
 }
 
 sub encode($$;$) {
     my ( $self, $str, $chk ) = @_;
 
-    $str = Encode::encode($self->_encoding3, $str, $chk);
-    $str = Encode::decode($self->_encoding2, $str, $chk);
-    Encode::encode($self->_encoding3, $str, $chk);
+    if ($str =~ /\p{InEmojiDocomo}/) {
+        $str = Encode::encode($self->_encoding3 => $str, $chk);
+        $str = Encode::decode($self->_encoding2 => $str, $chk);
+    }
+    Encode::encode($self->_encoding1 => $str, $chk);
 }
 
 1;
