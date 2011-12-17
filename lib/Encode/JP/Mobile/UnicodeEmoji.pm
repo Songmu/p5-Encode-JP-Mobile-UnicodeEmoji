@@ -30,7 +30,7 @@ sub decode($$;$) {
 sub encode($$;$) {
     my ( $self, $str, $chk ) = @_;
 
-    if ($str =~ /\p{InEmojiDocomo}/) {
+    if ($str =~ /\p{InEmojiDoCoMo}/) {
         $str = Encode::encode($self->_encoding3 => $str, $chk);
         $str = Encode::decode($self->_encoding2 => $str, $chk);
     }
