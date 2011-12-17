@@ -7,9 +7,11 @@ use Encode qw(:fallbacks);
 use Encode::JP::Mobile;
 use Encode::JP::Emoji;
 use Encode::JP::Emoji::Property;
+use Encode::MIME::Name;
 our $VERSION = '0.01';
 
 __PACKAGE__->Define(qw(x-utf8-jp-mobile-unicode-emoji));
+$Encode::MIME::Name::MIME_NAME_OF{'x-utf8-jp-mobile-unicode-emoji'} = 'UTF-8';
 
 sub _encoding1() { Encode::find_encoding('x-utf8-e4u-unicode') }
 sub _encoding2() { Encode::find_encoding('x-sjis-e4u-docomo') }
