@@ -14,8 +14,8 @@ __PACKAGE__->Define(qw(x-utf8-jp-mobile-unicode-emoji));
 $Encode::MIME::Name::MIME_NAME_OF{'x-utf8-jp-mobile-unicode-emoji'} = 'UTF-8';
 
 sub _encoding1() { Encode::find_encoding('x-utf8-e4u-unicode') }
-sub _encoding2() { Encode::find_encoding('x-sjis-e4u-docomo') }
-sub _encoding3() { Encode::find_encoding('x-sjis-docomo') }
+sub _encoding2() { Encode::find_encoding('x-utf8-e4u-docomo') }
+sub _encoding3() { Encode::find_encoding('x-utf8-docomo') }
 
 
 sub decode($$;$) {

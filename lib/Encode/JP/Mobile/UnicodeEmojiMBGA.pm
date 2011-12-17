@@ -14,8 +14,9 @@ __PACKAGE__->Define(qw(x-utf8-jp-mobile-unicode-emoji-mbga));
 $Encode::MIME::Name::MIME_NAME_OF{'x-utf8-jp-mobile-unicode-emoji-mbga'} = 'UTF-8';
 
 sub _encoding1() { Encode::find_encoding('x-utf8-e4u-unicode') }
-sub _encoding2() { Encode::find_encoding('x-utf8-e4u-softbank3g') }
-sub _encoding3() { Encode::find_encoding('x-utf8-softbank') }
+sub _encoding2() { Encode::find_encoding('x-utf8-e4u-docomo') }
+sub _encoding3() { Encode::find_encoding('x-utf8-docomo') }
+sub _encoding4() { Encode::find_encoding('x-utf8-softbank') }
 
 
 sub decode($$;$) {
@@ -32,7 +33,7 @@ sub decode($$;$) {
 sub encode($$;$) {
     my ( $self, $str, $chk ) = @_;
 
-    Encode::encode($self->_encoding3 => $str, $chk);
+    Encode::encode($self->_encoding4 => $str, $chk);
 }
 
 1;
