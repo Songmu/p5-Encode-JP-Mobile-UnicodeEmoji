@@ -44,15 +44,21 @@ __END__
 
 =head1 NAME
 
-Encode::JP::Mobile::UnicodeEmoji -
+Encode::JP::Mobile::UnicodeEmoji - Unicode emoji mapping for Encode::JP::Mobile
 
 =head1 SYNOPSIS
 
-  use Encode::JP::Mobile::UnicodeEmoji;
+    use Encode qw/encode decode/;
+    use Encode::JP::Mobile::UnicodeEmoji;
+    
+    my $str = '...';
+    $str = decode('x-utf8-jp-mobile-unicode-emoji', $str);
+    $str = encode('x-utf8-jp-Mobile-unicode-emoji', $str);
 
 =head1 DESCRIPTION
 
-Encode::JP::Mobile::UnicodeEmoji is
+Encode::JP::Mobile::UnicodeEmoji is encoding module for Unicode Emoji to
+Enocde::JP::Mobile's Emoji mapping.
 
 =head1 AUTHOR
 

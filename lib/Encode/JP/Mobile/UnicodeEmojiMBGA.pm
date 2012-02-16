@@ -41,15 +41,26 @@ __END__
 
 =head1 NAME
 
-Encode::JP::Mobile::UnicodeEmojiMBGA -
+Encode::JP::Mobile::UnicodeEmojiMBGA - Unicode emoji mapping specialize in mobage platform.
 
 =head1 SYNOPSIS
 
-  use Encode::JP::Mobile::UnicodeEmojiMBGA;
+    use Encode qw/encode decode/;
+    use Encode::JP::Mobile::UnicodeEmojiMBGA;
+    
+    my $str = '...';
+    $str = decode('x-utf8-jp-mobile-unicode-emoji-mbga', $str);
+    $str = encode('x-utf8-jp-Mobile-unicode-emoji-mbga', $str);
 
 =head1 DESCRIPTION
 
-Encode::JP::Mobile::UnicodeEmojiMBGA is
+Encode::JP::Mobile::UnicodeEmoji is encoding module for Unicode Emoji to
+Encode::JP::Mobile's Emoji.
+
+This encoding is specialize in mobage platform.
+
+And round trip conversion for strings containing uniocde emoji is not
+guaranteed at all.
 
 =head1 AUTHOR
 
