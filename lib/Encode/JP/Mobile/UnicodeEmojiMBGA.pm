@@ -8,7 +8,7 @@ use Encode::JP::Mobile;
 use Encode::JP::Emoji;
 use Encode::JP::Emoji::Property;
 use Encode::MIME::Name;
-our $VERSION = '0.01';
+our $VERSION = '0.011';
 
 __PACKAGE__->Define(qw(x-utf8-jp-mobile-unicode-emoji-mbga));
 $Encode::MIME::Name::MIME_NAME_OF{'x-utf8-jp-mobile-unicode-emoji-mbga'} = 'UTF-8';

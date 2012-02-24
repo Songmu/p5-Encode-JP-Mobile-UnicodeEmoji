@@ -1,4 +1,7 @@
 Revision history for Perl extension Encode::JP::Mobile::UnicodeEmoji
 
+0.011   Fri Feb 24 16:16:16 2012
+        - fix pod
+
 0.01    Fri Dec 16 20:31:26 2011
         - original version
