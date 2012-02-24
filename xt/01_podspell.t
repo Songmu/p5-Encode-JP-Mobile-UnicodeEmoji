@@ -8,3 +8,5 @@ __DATA__
 Masayuki Matsuki
 y.songmu@gmail.com
 Encode::JP::Mobile::UnicodeEmoji
+mobage
+Emoji

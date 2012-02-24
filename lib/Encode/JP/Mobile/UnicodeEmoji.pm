@@ -44,7 +44,7 @@ __END__
 
 =head1 NAME
 
-Encode::JP::Mobile::UnicodeEmoji - Unicode emoji mapping for Encode::JP::Mobile
+Encode::JP::Mobile::UnicodeEmoji - Unicode Emoji mapping for Encode::JP::Mobile
 
 =head1 SYNOPSIS
 
